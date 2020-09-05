@@ -1,14 +1,21 @@
 pipeline {
-    agent {
-        docker { image 'ubuntu:16.04' }
-    }
-    stages {
-        stage('example_1') {
-            steps {
-                sh 'apt-get update -y && \
-    apt-get install -y python-pip python-dev',
-                sh 'python /app/app.py'
-            }
+  agent none
+  stages {
+    stage('Maven Install') {
+      agent {
+        docker {
+          image 'maven:3.5.0'
         }
+      }
+      steps {
+        sh 'mvn clean install'
+      }
     }
+    stage('Docker Build') {
+      agent any
+      steps {
+        sh 'docker build -t shanem/spring-petclinic:latest .'
+      }
+    }
+  }
 }
