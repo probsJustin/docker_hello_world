@@ -10,9 +10,6 @@ pipeline {
       steps {
         sh 'lsb_release'
       }
-      steps {
-        sh 'apt-get install -y docker.io '
-      }
     }
     stage('Docker Build') {
       agent any
