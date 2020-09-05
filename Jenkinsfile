@@ -1,11 +1,17 @@
 pipeline {
   agent none
   stages {
-    stage('Ubuntu Install') {
+    stage('Maven Install') {
       agent {
         docker {
           image 'ubuntu:16.04'
         }
+      }
+      steps {
+        sh 'lsb_release'
+      }
+      steps {
+        sh 'apt-get install -y docker.io '
       }
     }
     stage('Docker Build') {
