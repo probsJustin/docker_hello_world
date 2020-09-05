@@ -1,14 +1,11 @@
 pipeline {
   agent none
   stages {
-    stage('Maven Install') {
+    stage('Ubuntu Install') {
       agent {
         docker {
-          image 'maven:3.5.0'
+          image 'ubuntu:16.04'
         }
-      }
-      steps {
-        sh 'mvn clean install'
       }
     }
     stage('Docker Build') {
