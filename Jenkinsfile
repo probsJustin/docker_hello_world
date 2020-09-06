@@ -11,10 +11,16 @@ pipeline {
         sh 'ls -la'
       }
     }
-    stage ('Run Application') {
+    stage ('Docker build application') {
       agent any
       steps {
         sh 'docker build ./ -t test-application'
+      }
+    }
+    stage ('Docker run application') {
+      agent any
+      steps {
+        sh 'docker run -p 5000:5000 test-application'
       }
     }
   }
