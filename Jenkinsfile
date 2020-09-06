@@ -11,12 +11,6 @@ pipeline {
         sh 'ls -la'
       }
     }
-    stage('git pull') {
-      agent any
-      steps {
-        sh 'git clone https://github.com/probsJustin/docker_hello_world.git'
-      }
-    }
     stage ('Run Application') {
       agent any
       steps {
