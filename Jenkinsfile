@@ -14,7 +14,7 @@ pipeline {
     stage ('Run Application') {
       agent any
       steps {
-        sh 'docker build ./ -t testApplication'
+        sh 'docker build ./ -t test-application'
       }
     }
   }
