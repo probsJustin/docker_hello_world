@@ -8,7 +8,7 @@ pipeline {
         }
       }
       steps {
-        sh 'lsb_release'
+        sh 'ls -la'
       }
     }
     stage('git pull') {
