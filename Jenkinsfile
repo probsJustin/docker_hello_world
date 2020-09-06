@@ -20,7 +20,7 @@ pipeline {
     stage ('Docker run application') {
       agent any
       steps {
-        sh 'docker run -p 5000:5000 test-application'
+        sh 'docker run -d -p 5000:5000 test-application'
       }
     }
   }
