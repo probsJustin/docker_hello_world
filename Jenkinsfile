@@ -14,8 +14,7 @@ pipeline {
     stage('Remove Old Docker Builds') {
       agent any
       steps {
-        sh 'docker rm $(docker stop $(docker ps -a -q --filter ancestor=test-application --format="{{.ID}}"))
-'
+        sh 'docker rm $(docker stop $(docker ps -a -q --filter ancestor=test-application --format="{{.ID}}"))'
       }
     }
 
