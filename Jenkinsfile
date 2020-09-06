@@ -17,5 +17,11 @@ pipeline {
         sh 'git clone https://github.com/probsJustin/docker_hello_world.git'
       }
     }
+    stage ('Run Application') {
+      agent any
+      steps {
+        sh 'docker build ./ -t testApplication'
+      }
+    }
   }
 }
