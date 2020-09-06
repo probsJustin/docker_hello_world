@@ -11,6 +11,14 @@ pipeline {
         sh 'ls -la'
       }
     }
+    stage('Remove Old Docker Builds') {
+      agent any
+      steps {
+        sh 'docker rm $(docker stop $(docker ps -a -q --filter ancestor=test-application --format="{{.ID}}"))
+'
+      }
+    }
+
     stage ('Docker build application') {
       agent any
       steps {
