@@ -14,7 +14,7 @@ pipeline {
     stage ('Docker build application') {
       agent any
       steps {
-        sh 'docker build ./ -t test-application'
+        sh 'docker build ./ -t pythontestapp:test-application'
       }
     }
     stage ('Docker run application') {
