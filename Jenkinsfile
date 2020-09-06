@@ -1,7 +1,7 @@
 pipeline {
   agent none
   stages {
-    stage('Maven Install') {
+    stage('Ubuntu Install') {
       agent {
         docker {
           image 'ubuntu:16.04'
@@ -11,10 +11,10 @@ pipeline {
         sh 'lsb_release'
       }
     }
-    stage('Docker Build') {
+    stage('git pull') {
       agent any
       steps {
-        sh 'docker build -t test .'
+        sh 'git clone https://github.com/probsJustin/docker_hello_world'
       }
     }
   }
